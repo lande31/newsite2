@@ -17,9 +17,6 @@ def index(request):
     return render(request, 'food/index.html',context)
 
 
-def love(request):
-    return HttpResponse('home alone')
-
 def detail(request, item_id):
     items = item.objects.get(pk=item_id)
     context ={
