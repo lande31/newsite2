@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import item
-from .forms import ItemForm
+from .models import item, Customer
+from .forms import ItemForm,CustomerForm
 from django.template import loader
 
 
 def index(request):
-    item_list = item.objects.all()
+    item_list = item.objects.all().values()
     #template= loader.get_template('food/index.html')
     context = {
         'item_list':item_list,
@@ -47,10 +47,21 @@ def update_item(request, id):
 def delete_item(request, id):
     data = item.objects.get(id=id)
 
+
     if request.method == 'POST':
         data.delete()
         return redirect('food:index')
     return render(request, 'food/delete-item.html', {'data': data})
+
+
+
+def custom(request):
+    form = CustomerForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('food:index')
+    
+    return render(request, 'food/customer.html',{'form':form})
 
 
 

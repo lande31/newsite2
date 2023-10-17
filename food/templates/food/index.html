@@ -24,7 +24,7 @@
      <h6> #{{ items.price }}</h6>
     </div>
     <div class="col-md-2">
-        <a href="{% url 'food:detail' items.id %}" class="btn btn-success">Details</a>
+        <a href="{% url 'food:detail' items.id %}" class="btn btn-success">'{{items.name}}'</a>
     </div>
 </div>
 {% endfor %}
