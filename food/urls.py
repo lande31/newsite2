@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 app_name = 'food'
 
 urlpatterns = [
@@ -11,5 +12,6 @@ urlpatterns = [
     path('update/<int:id>/', views.update_item, name= 'update_item'),
     path('delete/<int:id>/', views.delete_item, name='delete_item'),
     path('custom/',views.custom, name='custom'),
+    #path('random-array/', RandomArray.as_view(), name='random-array'),
 ]
 

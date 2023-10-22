@@ -1,7 +1,14 @@
+import random
+
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import item, Customer
 from .forms import ItemForm,CustomerForm
+
+
+from django.http import JsonResponse
+
+
 from django.template import loader
 
 
@@ -62,6 +69,13 @@ def custom(request):
         return redirect('food:index')
     
     return render(request, 'food/customer.html',{'form':form})
+
+
+
+
+
+
+
 
 
 
